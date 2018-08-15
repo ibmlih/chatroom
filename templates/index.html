@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block head%}
+    <title>Choose a Display Name</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem("displayName")) {
+                document.querySelector('#form').onsubmit = () => {
+                    const name = document.querySelector("#name").value;
+                    localStorage.setItem("displayName", name);
+                };
+            }
+
+            else {
+                window.location.replace(window.location.href + "channels");
+            }
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <h3> Choose a Display Name </h3>
+        </div>
+        <br>
+        <div class="row">
+            <form id="form" action={{ url_for( 'channels') }}>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" placeholder="Enter a display name"> <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

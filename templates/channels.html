@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <title>Channels</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('#displayName').innerHTML = localStorage.getItem('displayName');
+        });
+
+    </script>
+{% endblock %}
+
+
+{% block body %}
+    <h4> Display Name: <span id='displayName'> </span> </h4>
+{% endblock %}
